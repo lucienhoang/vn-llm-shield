@@ -6,12 +6,12 @@ A security gateway that sits between users and an enterprise LLM chatbot. It mas
 
 ## Features
 
-- [ ] Vietnamese PII detection and masking (names, phone numbers, national ID, bank accounts) with restoration in the response
-- [ ] Prompt injection / jailbreak detection (rules + ML classifier)
-- [ ] Role-based access control applied **before** documents enter the prompt (RAG)
-- [ ] AES-GCM encrypted conversation logs
-- [ ] Local LLM via Ollama (no data leaves the machine)
-- [ ] Web demo with protection ON/OFF comparison
+- [ ] Vietnamese PII detection and masking (names, phone numbers, national ID, bank accounts) with restoration in the response.
+- [ ] Prompt injection / jailbreak detection (rules + ML classifier).
+- [ ] Role-based access control applied **before** documents enter the prompt (RAG).
+- [ ] AES-GCM encrypted conversation logs.
+- [ ] Local LLM via Ollama (no data leaves the machine).
+- [ ] Web demo with protection ON/OFF comparison.
 
 ## Architecture
 
