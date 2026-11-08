@@ -1,0 +1,35 @@
+# Python
+__pycache__/
+*.py[cod]
+.venv/
+venv/
+.pytest_cache/
+.ipynb_checkpoints/
+*.egg-info/
+
+# Secrets (KHÔNG BAO GIỜ commit)
+.env
+*.key
+*.pem
+secrets/
+
+# Logs thật và dữ liệu nhạy cảm
+logs/
+*.log
+*.enc
+
+# Model và file nặng
+*.gguf
+*.bin
+*.safetensors
+models/
+.cache/
+
+# Kết quả chạy thử (giữ lại bảng/biểu đồ tổng hợp thì để trong experiments/results/)
+experiments/tmp/
+
+# IDE / OS
+.vscode/
+.idea/
+.DS_Store
+Thumbs.db

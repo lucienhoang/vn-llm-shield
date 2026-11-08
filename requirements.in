@@ -1,0 +1,10 @@
+fastapi
+uvicorn
+httpx
+python-dotenv
+pydantic
+cryptography
+scikit-learn
+pandas
+streamlit
+pytest
