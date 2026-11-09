@@ -68,8 +68,8 @@ File này mô tả cách làm việc chung để code không đè lên nhau và 
 ## 5. Quy ước code
 
 - **Python 3.11**, dùng venv (`py -3.11 -m venv .venv`), luôn bật venv trước khi làm.
-- **Hợp đồng giao diện** (`app/types.py` và chữ ký hàm ở `docs/` hoặc ghi chú dự án) là thứ hai người cùng dựa vào.
-  **Không tự ý đổi** tên, tham số, kiểu trả về. Cần đổi thì mở Issue, hai người đồng ý rồi mới sửa, kèm cập nhật stub.
+- **Hợp đồng giao diện** nằm ở `app/types.py` và `docs/interface_contract.md`; hai người cùng dựa vào đó.
+- **Không tự ý đổi** tên, tham số, kiểu trả về. Cần đổi thì mở Issue, hai người đồng ý rồi mới sửa, kèm cập nhật stub.
 - Mỗi module có file test trong `tests/` (ví dụ `tests/test_pii.py`). PR mới phải kèm test cho phần mình làm.
 - Có type hint cho hàm công khai; tên hàm/biến tiếng Anh, comment có thể tiếng Việt.
 - **Thêm thư viện mới:**
