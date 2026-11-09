@@ -35,6 +35,16 @@ def test_crypto_log_contract():
     assert {"event": "test"} in records
 
 
-def test_llm_contract():
+class _FakeResponse:
+    def raise_for_status(self):
+        pass
+
+    def json(self):
+        return {"message": {"role": "assistant", "content": "xin chào"}}
+
+
+def test_llm_contract(monkeypatch):
+    # Fake the HTTP call so the test does not need Ollama running.
+    monkeypatch.setattr(llm_client.httpx, "post", lambda *a, **kw: _FakeResponse())
     assert isinstance(llm_client.generate("hello"), str)
     assert isinstance(llm_client.generate("hello", system="be brief"), str)
