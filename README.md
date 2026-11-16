@@ -2,8 +2,6 @@
 
 A security gateway that sits between users and an enterprise LLM chatbot. It masks Vietnamese PII, detects prompt injection / jailbreak attempts, enforces role-based access control on RAG documents, and keeps conversation logs encrypted.
 
-> Course project: Information Security (CMP174), HUTECH. Topic C5: protecting data when using LLMs.
-
 ## Features
 
 - [ ] Vietnamese PII detection and masking (names, phone numbers, national ID, bank accounts) with restoration in the response.
