@@ -105,7 +105,9 @@ RULES = [
     ),
     _r(
         "jailbreak_en_mode",
-        r"\b(developer mode|dan mode|jailbreak mode|do anything now)\b",
+        r"\b(dan mode|jailbreak mode|do anything now)\b"
+        r"|\bdeveloper mode\b.{0,40}\b(no (safety )?(rules|restrictions|limits|filters)|unrestricted|enabled|activated|without)\b"
+        r"|\b(you are now|enter|enable|activate|switch to)\b.{0,15}\bdeveloper mode\b",
         0.8,
         "English: known jailbreak mode",
     ),

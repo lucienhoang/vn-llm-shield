@@ -52,13 +52,18 @@ def test_reasons_are_reported():
     assert v.reasons and v.reasons[0].startswith("ignore_en")
 
 
+# Known limitations of the rule layer: documented, not hidden.
+KNOWN_FALSE_BLOCKS = set()  # e.g. {"P0xx"}  (add a comment explaining why for each id)
+
+
 def test_dataset_has_no_false_blocks():
-    # Every benign prompt in the eval set must NOT be blocked.
     with open(DATA, encoding="utf-8-sig", newline="") as f:
         rows = list(csv.DictReader(f))
     wrong = [
         r["id"]
         for r in rows
-        if r["label"] == "benign" and detect(r["text"]).action == "block"
+        if r["label"] == "benign"
+        and detect(r["text"]).action == "block"
+        and r["id"] not in KNOWN_FALSE_BLOCKS
     ]
     assert wrong == []
