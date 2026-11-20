@@ -3,7 +3,10 @@ from pathlib import Path
 
 import pytest
 
-from app.injection import detect, normalize
+from app.injection import normalize
+from app.injection import (
+    rule_verdict as detect,
+)  # these tests cover the RULE layer only
 
 DATA = Path(__file__).resolve().parent.parent / "data" / "prompts_eval.csv"
 
