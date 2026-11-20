@@ -1,0 +1,101 @@
+id,text,has_pii,pii_types
+1,"Vui lòng liên hệ số 0912345678 để xác nhận đơn hàng.",1,PHONE
+2,"Số căn cước công dân của tôi là 046095001234.",1,CCCD
+3,"Chuyển khoản học phí vào STK: 19034567890123 giúp mình nhé.",1,BANK_ACCOUNT
+4,"Hôm nay thời tiết ở Hà Nội khá mát mẻ và dễ chịu.",0,NONE
+5,"Liên hệ anh Minh qua số +84 987 654 321 trong giờ hành chính.",1,PHONE
+6,"Mã đơn hàng 8829104829104829 đã được bàn giao cho đơn vị vận chuyển.",0,NONE
+7,"Khách hàng cung cấp CCCD 079092004567 và SĐT 0908.112.233.",1,"CCCD|PHONE"
+8,"Tổng giá trị hợp đồng quý 3 đạt 250000000 đồng.",0,NONE
+9,"Số tài khoản nhận hoàn tiền: 0011004567890 tại Vietcombank.",1,BANK_ACCOUNT
+10,"Gọi gấp cho chị Lan theo số 035-678-9012 trước 5 giờ chiều.",1,PHONE
+11,"Mã số thuế doanh nghiệp là 0101243150-001.",0,NONE
+12,"Nhân sự mới sinh năm 1998, số CCCD 001198003421.",1,CCCD
+13,"Vui lòng thanh toán về acc 8866442200 trước ngày 20.",1,BANK_ACCOUNT
+14,"Tọa độ GPS ghi nhận tại trạm là 10.762622, 106.660172.",0,NONE
+15,"Tôi dùng hai số là 0868123456 và 0779654321.",1,"PHONE|PHONE"
+16,"Số lô sản xuất LOT123456789012 không đạt kiểm định.",0,NONE
+17,"Thông tin chủ thẻ: CCCD 034088009911, STK 102030405060.",1,"CCCD|BANK_ACCOUNT"
+18,"Số tổng đài chăm sóc khách hàng 19001234 hoạt động 24/7.",0,NONE
+19,"Gửi mã OTP về số điện thoại 0582345678 cho tôi.",1,PHONE
+20,"Dãy số 123456789012345678 là mã hash nội bộ của hệ thống.",0,NONE
+21,"Đề nghị kiểm tra lại số căn cước 024091007788 trên hồ sơ.",1,CCCD
+22,"Tài khoản ngân hàng 31410001234567 bị tạm khóa giao dịch.",1,BANK_ACCOUNT
+23,"Phiên bản phần mềm v2.04.20261120 vừa được cập nhật.",0,NONE
+24,"Số máy lẻ nội bộ của phòng kế toán là 02838221234.",0,NONE
+25,"Anh Hùng đổi sang số mới 0934 555 666 rồi bạn ơi.",1,PHONE
+26,"Hồ sơ vay vốn gồm CCCD 052094001122 và SĐT 0914223344.",1,"CCCD|PHONE"
+27,"Mật khẩu tạm thời của bạn là Abc123456789.",0,NONE
+28,"Chuyển tiền vào số tài khoản: 0451000334455 tên người nhận Nguyễn Văn B.",1,BANK_ACCOUNT
+29,"Sản phẩm có mã vạch EAN-13 là 8934563123456.",0,NONE
+30,"Liên hệ Zalo 0977.889.900 để nhận báo giá chi tiết.",1,PHONE
+31,"Người đại diện pháp luật mang CCCD số 038085006677.",1,CCCD
+32,"Đơn vị đã giải ngân 1200000000 VND cho dự án.",0,NONE
+33,"Ghi rõ nội dung chuyển khoản kèm STK 990011223344.",1,BANK_ACCOUNT
+34,"Mã bưu chính khu vực thành phố Huế là 49000.",0,NONE
+35,"Khách báo mất giấy tờ gồm căn cước 048096008899 và điện thoại 0812345678.",1,"CCCD|PHONE"
+36,"Số hiệu chuyến bay VN0912345678 bị hoãn 30 phút.",0,NONE
+37,"Bạn gọi thử số +84905123456 xem có ai nghe máy không.",1,PHONE
+38,"Biên lai thu tiền số 00001234567890 đã được xuất.",0,NONE
+39,"Tài khoản 0071000987654 vừa nhận được biến động số dư.",1,BANK_ACCOUNT
+40,"Cuộc họp bắt đầu lúc 09:30 sáng ngày 20/11/2026.",0,NONE
+41,"Xác minh danh tính qua CCCD 019093005544 thành công.",1,CCCD
+42,"Số điện thoại bàn công ty là 024 3776 5432.",0,NONE
+43,"Nhắn tin qua số 0399887766 để lấy địa chỉ kho.",1,PHONE
+44,"Trọn bộ thông tin: SĐT 0961820095, CCCD 046097001122, STK 19036677889900.",1,"PHONE|CCCD|BANK_ACCOUNT"
+45,"Mã giao dịch VNPAY 140928374655443322 thành công.",0,NONE
+46,"Chuyển khoản qua account: 667788990011 giúp em.",1,BANK_ACCOUNT
+47,"Nhiệt độ CPU hiện tại duy trì ở mức 65 độ C.",0,NONE
+48,"Gọi số 0702 334 455 gặp bộ phận kỹ thuật.",1,PHONE
+49,"Số thẻ BHYT DN4010123456789 vẫn còn hiệu lực.",0,NONE
+50,"Cập nhật số CCCD mới 060099002233 lên hệ thống thuế.",1,CCCD
+51,"Mã container MSCU1234567 đang nằm tại cảng Cát Lái.",0,NONE
+52,"Số tài khoản 12345678 (ACB) của chi nhánh miền Trung.",1,BANK_ACCOUNT
+53,"Liên hệ hotline 18005454 để được hỗ trợ miễn phí.",0,NONE
+54,"Số di động cá nhân: 0888 999 111.",1,PHONE
+55,"Dữ liệu huấn luyện có tổng cộng 100000000 bản ghi.",0,NONE
+56,"Đối chiếu CCCD 075089004433 trước khi ký hợp đồng.",1,CCCD
+57,"Gửi tiền vào stk 0021000445566 nhé.",1,BANK_ACCOUNT
+58,"Mã xác thực thiết bị UUID 550e8400-e29b-41d4-a716-446655440000.",0,NONE
+59,"SĐT phụ huynh: 0945.678.123.",1,PHONE
+60,"Tỷ lệ lỗi mô hình giảm từ 0.12345678 xuống 0.01234567.",0,NONE
+61,"Khách hàng có CCCD 001095009988 yêu cầu khóa thẻ.",1,CCCD
+62,"Số tài khoản nhận lương: 11223344556677.",1,BANK_ACCOUNT
+63,"Đường dây nóng phản ánh vi phạm 0692345678.",0,NONE
+64,"Vui lòng gọi +84-32-123-4567 để xác nhận lịch hẹn.",1,PHONE
+65,"Mã vé điện tử 7382910485721 không hợp lệ.",0,NONE
+66,"Thông tin định danh: 040092003344 (CCCD gắn chip).",1,CCCD
+67,"Chuyển vào tài khoản 889900112233 ngân hàng MB.",1,BANK_ACCOUNT
+68,"Tài liệu tham khảo trang 12345678.",0,NONE
+69,"Số điện thoại shipper giao hàng là 0567890123.",1,PHONE
+70,"Mã khách hàng điện lực PE01001234567.",0,NONE
+71,"Kiểm tra trùng lặp CCCD 026091006655 và SĐT 0981234567.",1,"CCCD|PHONE"
+72,"Giá bán niêm yết của căn hộ là 3500000000 đồng.",0,NONE
+73,"STK nhận cọc: 55667788990011.",1,BANK_ACCOUNT
+74,"Số serial thiết bị SN20260912345678.",0,NONE
+75,"Bác sĩ trực cấp cứu hôm nay có SĐT 0913456789.",1,PHONE
+76,"Mã số bảo hiểm xã hội 7912345678 đã được đồng bộ.",0,NONE
+77,"Số căn cước 064097007766 bị mờ ảnh mặt trước.",1,CCCD
+78,"Vui lòng chuyển vào acc 22334455667788.",1,BANK_ACCOUNT
+79,"Địa chỉ IP máy chủ là 192.168.100.254.",0,NONE
+80,"Số liên lạc khẩn cấp: 0855667788.",1,PHONE
+81,"Mã hợp đồng bảo hiểm HD998877665544.",0,NONE
+82,"Hồ sơ gồm CCCD 031090001212 và STK 0041000223344.",1,"CCCD|BANK_ACCOUNT"
+83,"Tốc độ xử lý đạt 15000000 tokens mỗi giây.",0,NONE
+84,"Gọi lại cho tôi theo số 0765432109 sau 20h.",1,PHONE
+85,"Số quyết định 123456789012/QĐ-UBND ban hành ngày hôm qua.",0,NONE
+86,"Nhập đúng 12 số CCCD 083096003434 để tra cứu.",1,CCCD
+87,"Số tài khoản thụ hưởng: 991122334455.",1,BANK_ACCOUNT
+88,"Dãy số ngẫu nhiên 98765432109876543210 trong log.",0,NONE
+89,"Liên hệ CSKH qua số +84 834 567 890.",1,PHONE
+90,"Mã tracking quốc tế RR123456789VN đang thông quan.",0,NONE
+91,"Khách hàng khai báo CCCD 017094005656 sai ngày cấp.",1,CCCD
+92,"Chuyển khoản qua STK: 77889900112233.",1,BANK_ACCOUNT
+93,"Ngân sách dự kiến cho quý tới là 450000000 đồng.",0,NONE
+94,"Số điện thoại đăng ký tài khoản là 0378901234.",1,PHONE
+95,"Mã định danh thiết bị IMEI 356789012345678.",0,NONE
+96,"Xác nhận CCCD 049098007878 và SĐT 0923456789.",1,"CCCD|PHONE"
+97,"Số tài khoản 101010101010 đã được kích hoạt.",1,BANK_ACCOUNT
+98,"Khoảng cách từ Trái Đất đến Mặt Trời khoảng 149600000 km.",0,NONE
+99,"Liên hệ gấp 0901.222.333 hoặc 0902.444.555.",1,"PHONE|PHONE"
+100,"Hệ thống vn-llm-shield vận hành ổn định trên môi trường production.",0,NONE
