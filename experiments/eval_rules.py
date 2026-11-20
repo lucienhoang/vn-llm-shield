@@ -4,7 +4,7 @@ import csv
 import time
 from pathlib import Path
 
-from app.injection import detect
+from app.injection import rule_verdict as detect
 
 DATA = Path(__file__).resolve().parent.parent / "data" / "prompts_eval.csv"
 

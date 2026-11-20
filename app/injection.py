@@ -7,21 +7,14 @@ The ML classifier (issue #16) will be combined with this later.
 """
 
 import re
-import unicodedata
 from dataclasses import dataclass
 
+from app import injection_ml
+from app.textnorm import normalize  # also re-exported: tests import it from here
 from app.types import Verdict
 
 BLOCK_THRESHOLD = 0.7
 WARN_THRESHOLD = 0.4
-
-
-def normalize(text: str) -> str:
-    """Lowercase, remove diacritics, map đ -> d, collapse whitespace."""
-    text = text.lower().replace("đ", "d")
-    text = unicodedata.normalize("NFD", text)
-    text = "".join(c for c in text if unicodedata.category(c) != "Mn")
-    return re.sub(r"\s+", " ", text).strip()
 
 
 @dataclass(frozen=True)
@@ -149,6 +142,20 @@ def rule_verdict(text: str) -> Verdict:
     )
 
 
+_RANK = {"allow": 0, "warn": 1, "block": 2}
+
+
+def combine(rule: Verdict, clf: Verdict) -> Verdict:
+    """Stricter action wins; score is the max; reasons from both layers."""
+    action = max(rule.action, clf.action, key=_RANK.get)
+    return Verdict(
+        action=action,
+        score=max(rule.score, clf.score),
+        reasons=rule.reasons + clf.reasons,
+    )
+
+
 def detect(text: str) -> Verdict:
-    """Public contract (do not change the signature). For now = rules only."""
-    return rule_verdict(text)
+    """Public contract (signature unchanged): rules + classifier.
+    Use rule_verdict() alone when the ML layer must be switched off (issue #17)."""
+    return combine(rule_verdict(text), injection_ml.clf_verdict(text))
