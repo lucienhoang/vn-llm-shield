@@ -24,6 +24,7 @@ update `app/types.py`, the stubs, `tests/test_contract.py` and this file in the 
 | `crypto_log.py` | `write(record: dict)`           | `None`                                 | B     |
 | `crypto_log.py` | `read_all()`                    | `list[dict]` (decrypted, needs key)    | B     |
 | `llm_client.py` | `generate(prompt, system=None)` | `str`                                  | A     |
+| `pii.py`        | `clear_session(session_id)`     | `None` (drops the session's PII map)   | B     |
 
 ## Rules
 
@@ -31,6 +32,14 @@ update `app/types.py`, the stubs, `tests/test_contract.py` and this file in the 
 - `rag_acl.retrieve` filters by role **before** documents are put into the prompt.
 - Token format for masked PII: `<NAME_1>`, `<PHONE_1>`, `<CCCD_1>`, `<ACCOUNT_1>`.
 - The PII token map is stored per `session_id` and never written to logs in plaintext.
+- `pii.mask` may be called several times with the same `session_id` (the question, then each
+  retrieved document). The same original value must always get the same token within a session
+  (`0912345678` is always `<PHONE_1>`), and new values get the next number. `pii.unmask` must
+  restore every token created in that session. The pipeline relies on this.
+- `pii.clear_session` is called by the pipeline when a one-shot request ends, so PII never
+  accumulates in memory.
+- `rag_acl.retrieve(query, role)` is also called with `role="admin"` to simulate "no access
+  control" in experiments, so `admin` must be allowed on every document.
 
 ## Data formats
 
