@@ -23,7 +23,8 @@ def test_chat_endpoint(monkeypatch):
         baseline.llm_client, "generate", lambda prompt, system=None: "ok"
     )
     resp = client.post(
-        "/chat", json={"message": "nghỉ phép bao nhiêu ngày", "role": "employee"}
+        "/baseline/chat",
+        json={"message": "nghỉ phép bao nhiêu ngày", "role": "employee"},
     )
     assert resp.status_code == 200
     body = resp.json()
