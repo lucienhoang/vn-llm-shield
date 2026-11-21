@@ -7,11 +7,10 @@ from app.types import MaskResult
 
 PII_PATTERNS: dict[str, re.Pattern[str]] = {
     "CCCD": re.compile(r"(?<!\d)(?:0\d{2}[0-3]\d{2}\d{6}|\d{12})(?!\d)"),
-    "PHONE": re.compile(
-        r"(?<!\d)(?:\+84|0)(?:3|5|7|8|9)(?:[\s\.-]?\d){8}(?!\d)"
-    ),
+    "PHONE": re.compile(r"(?<!\d)(?:\+84[\s.-]?|0)[35789](?:[\s.-]?\d){8}(?!\d)"),
     "BANK_ACCOUNT": re.compile(
-        r"(?i)(?:stk|số\s*tài\s*khoản|tài\s*khoản|account|acc)[\s:.-]*([0-9]{8,16})(?!\d)"
+        r"(?i)(?:stk|số\s*tài\s*khoản|tài\s*khoản|account|acc)"
+        r"(?:[\s:.-]*|(?:\s+[^\W\d_]+){1,3}\s*:\s*)([0-9]{8,16})(?!\d)"
     ),
 }
 
@@ -40,9 +39,7 @@ def detect_pii(text: str) -> list[dict[str, Any]]:
                 start, end = match.span(0)
 
             # Tránh trùng lặp nếu chuỗi 12 chữ số khớp chéo giữa CCCD và STK
-            if any(
-                f["start"] <= start and end <= f["end"] for f in findings
-            ):
+            if any(f["start"] <= start and end <= f["end"] for f in findings):
                 continue
 
             findings.append(
@@ -114,9 +111,7 @@ def mask(text: str, session_id: str) -> MaskResult:
     masked_text = text
     for ent in reversed(entities):
         start, end = ent["start"], ent["end"]
-        masked_text = (
-            masked_text[:start] + ent["placeholder"] + masked_text[end:]
-        )
+        masked_text = masked_text[:start] + ent["placeholder"] + masked_text[end:]
 
     return MaskResult(masked_text=masked_text, entities=entities)
 
@@ -138,9 +133,7 @@ def unmask(text: str, session_id: str) -> str:
     unmasked_text = text
     # Sắp xếp key giảm dần theo độ dài để tránh thay thế nhầm (vd: [PHONE_1] vs [PHONE_10])
     for placeholder in sorted(session_map.keys(), key=len, reverse=True):
-        unmasked_text = unmasked_text.replace(
-            placeholder, session_map[placeholder]
-        )
+        unmasked_text = unmasked_text.replace(placeholder, session_map[placeholder])
 
     return unmasked_text
 

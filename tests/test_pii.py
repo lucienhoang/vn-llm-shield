@@ -1,5 +1,6 @@
 import pytest
-from pii import clear_session, detect_pii, mask, unmask
+
+from app.pii import clear_session, detect_pii, mask, unmask
 
 
 @pytest.mark.parametrize(
@@ -11,6 +12,10 @@ from pii import clear_session, detect_pii, mask, unmask
         ("CCCD của nhân viên là 046095001234.", "CCCD", "046095001234"),
         ("Chuyển tiền vào STK: 19034567890123", "BANK_ACCOUNT", "19034567890123"),
         ("Số tài khoản nhận: 0011001234567", "BANK_ACCOUNT", "0011001234567"),
+        ("Liên hệ +84912345000 nhé", "PHONE", "+84912345000"),
+        ("Gọi +84 90 123 4567 giúp mình", "PHONE", "+84 90 123 4567"),
+        ("STK nhận: 0011001234567", "BANK_ACCOUNT", "0011001234567"),
+        ("Số tài khoản của tôi: 1022334455", "BANK_ACCOUNT", "1022334455"),
     ],
 )
 def test_detect_pii_positive(
@@ -29,6 +34,8 @@ def test_detect_pii_positive(
         "Tổng hóa đơn thanh toán là 15000000 đồng.",
         "Số hotline cũ 02438251234 không còn sử dụng.",
         "Năm 2026 dự kiến tăng trưởng 12%.",
+        "Tài khoản đã nhận 15000000 đồng hôm qua.",
+        "Tài khoản này được tạo ngày 12112026 nhé.",
     ],
 )
 def test_detect_pii_false_positives(text: str) -> None:
@@ -40,18 +47,18 @@ def test_mask_and_unmask_roundtrip() -> None:
     clear_session(session_id)
 
     raw = (
-        "Khách hàng Nguyễn Văn A, CCCD 079090005678, "
-        "SĐT 0909.123.456, STK 9988776655."
+        "Khách hàng Nguyễn Văn A, CCCD 079090005678, SĐT 0909.123.456, STK 9988776655."
     )
     result = mask(raw, session_id=session_id)
 
     assert result.masked_text == (
-        "Khách hàng Nguyễn Văn A, CCCD [CCCD_1], "
-        "SĐT [PHONE_1], STK [BANK_ACCOUNT_1]."
+        "Khách hàng Nguyễn Văn A, CCCD [CCCD_1], SĐT [PHONE_1], STK [BANK_ACCOUNT_1]."
     )
     assert len(result.entities) == 3
 
-    llm_reply = "Đã xác nhận thông tin cho số [PHONE_1] và chuyển khoản về [BANK_ACCOUNT_1]."
+    llm_reply = (
+        "Đã xác nhận thông tin cho số [PHONE_1] và chuyển khoản về [BANK_ACCOUNT_1]."
+    )
     restored = unmask(llm_reply, session_id=session_id)
     assert restored == (
         "Đã xác nhận thông tin cho số 0909.123.456 và chuyển khoản về 9988776655."
@@ -64,9 +71,18 @@ def test_session_isolation() -> None:
     mask("Gọi số 0911111111", session_id="sess_A")
     mask("Gọi số 0922222222", session_id="sess_B")
 
-    assert unmask("Số của bạn là [PHONE_1]", session_id="sess_A") == "Số của bạn là 0911111111"
-    assert unmask("Số của bạn là [PHONE_1]", session_id="sess_B") == "Số của bạn là 0922222222"
-    assert unmask("Số của bạn là [PHONE_1]", session_id="sess_unknown") == "Số của bạn là [PHONE_1]"
+    assert (
+        unmask("Số của bạn là [PHONE_1]", session_id="sess_A")
+        == "Số của bạn là 0911111111"
+    )
+    assert (
+        unmask("Số của bạn là [PHONE_1]", session_id="sess_B")
+        == "Số của bạn là 0922222222"
+    )
+    assert (
+        unmask("Số của bạn là [PHONE_1]", session_id="sess_unknown")
+        == "Số của bạn là [PHONE_1]"
+    )
 
     clear_session("sess_A")
     clear_session("sess_B")
