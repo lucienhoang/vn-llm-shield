@@ -12,6 +12,7 @@ venv/
 *.key
 *.pem
 secrets/
+.streamlit/secrets.toml
 
 # Logs thật và dữ liệu nhạy cảm
 logs/

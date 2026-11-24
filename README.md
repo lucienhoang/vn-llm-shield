@@ -35,7 +35,17 @@ cp .env.example .env   # then fill in the values
 
 ### Run
 
-_TODO: commands for the API and the demo UI._
+Start Ollama and pull the model once (`ollama pull qwen2.5:3b`), then:
+
+```bash
+# Demo UI: same question with and without protection
+streamlit run ui/app.py
+
+# Or the HTTP API (docs at http://127.0.0.1:8000/docs)
+uvicorn app.main:app
+```
+
+![demo](docs/demo.gif)
 
 ### Demo accounts
 
